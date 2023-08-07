@@ -35,19 +35,15 @@ class Barco {
 
     update() {
         //Position update
-        // this.velocity[0] += this.force * Math.cos(this.teta);
-        // this.velocity[1] += this.force * Math.sin(this.teta);
-
-        this.latitude += this.force * Math.cos(this.teta);
-        this.longitude += this.force * Math.sin(this.teta);
-
+        this.velocity[0] += this.force * Math.cos(this.teta);
+        this.velocity[1] += this.force * Math.sin(this.teta);
 
         if (Math.abs(this.teta) > 2 * Math.PI)
             this.teta = 0;
 
 
-        // this.latitude += this.velocity[0];
-        // this.longitude += this.velocity[1];
+        this.latitude += this.velocity[0];
+        this.longitude += this.velocity[1];
 
         //limitadores
         let maxL = 170;
