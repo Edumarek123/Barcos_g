@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+</head>
+
+<body>
+    <div id="ponto"></div>
+
+    <div id="game">
+        <div id="map_wrapper">
+            <img src="_media/Mercator_Projection.svg" alt="world_map" id="world_map">
+        </div>
+        <canvas id="game_screen"></canvas>
+    </div>
+
+
+    <style>
+        #game,
+        #game_screen {
+            z-index: 10;
+            position: absolute;
+            width: 1000px;
+            overflow: hidden;
+        }
+
+        #game {
+            border: 2px solid black;
+        }
+
+        #game_screen {
+            z-index: 20;
+            top: 0;
+            height: 1000px;
+        }
+
+        #map_wrapper {
+            transform: scale(4);
+        }
+
+        #game img {
+            display: block;
+            width: 100%;
+            height: auto;
+            background-color: rgb(111, 111, 252);
+        }
+    </style>
+</body>
+
+
+<script src="_javascript/mapa.js"></script>
+<script src="_javascript/Barco.js"></script>
+<script src="_javascript/main.js"></script>
+
+</html>
