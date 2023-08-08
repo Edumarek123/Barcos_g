@@ -22,10 +22,10 @@ function coordenadas_to_pixels(longitude, latitude) {
     let mHeight = document.getElementById("world_map").offsetHeight;
 
     let x = (longitude + 180) * (mWidth / 360);
-    let y = (mHeight / 2) - (Math.log(Math.tan((Math.PI / 4) + ((latitude * Math.PI / 180) / 2))) / (2 * Math.PI));
 
-    document.getElementById("ponto").style.left = (x - 1.5).toString() + "px";
-    document.getElementById("ponto").style.top = (y - 1.5).toString() + "px";
+    let latRad = latitude * Math.PI / 180;
+    let a = Math.log(Math.tan((Math.PI / 4) + (latRad / 2)));
+    let y = (mHeight / 2) - (mWidth * a / (2 * Math.PI));
 
     return { x, y };
 }

@@ -35,18 +35,27 @@ class Barco {
 
     update() {
         //Position update
-        this.velocity[0] += this.force * Math.cos(this.teta);
-        this.velocity[1] += this.force * Math.sin(this.teta);
+        this.velocity[0] += this.force * -Math.sin(this.teta);
+        this.velocity[1] += this.force * -Math.cos(this.teta);
+
+        let maxVelocity = 1;
+        for (let i = 0; i < 2; i++) {
+            if (Math.abs(this.velocity[i]) > maxVelocity) {
+                if (this.velocity[i] > 0)
+                    this.velocity[i] = maxVelocity;
+                else
+                    this.velocity[i] = -maxVelocity;
+            }
+        }
 
         if (Math.abs(this.teta) > 2 * Math.PI)
             this.teta = 0;
 
-
-        this.latitude += this.velocity[0];
-        this.longitude += this.velocity[1];
+        this.longitude += this.velocity[0];
+        this.latitude += this.velocity[1];
 
         //limitadores
-        let maxL = 170;
+        let maxL = 180;
         if (this.longitude > maxL) {
             this.longitude = -maxL;
         }
@@ -64,6 +73,11 @@ class Barco {
         if (this.latitude < -maxL) {
             this.latitude = maxL;
         }
+
+        this.force = 0;
+
+        this.velocity[0] *= 0.97;
+        this.velocity[1] *= 0.97;
 
         //att mapa
         mover_para_coordenadas(this.longitude, this.latitude);

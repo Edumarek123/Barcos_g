@@ -1,6 +1,6 @@
 //CANVAS
-const WIDTH = 1000;
-const HEIGHT = 1000;
+const WIDTH = document.getElementById("map_wrapper").offsetWidth;
+const HEIGHT = document.getElementById("map_wrapper").offsetHeight;
 
 const CANVAS = document.getElementById("game_screen");
 const ctx = CANVAS.getContext("2d");
@@ -49,7 +49,7 @@ var FF = 0;
 
 function loop_principal() {
 
-    BARCO.input(FF, TT);
+    BARCO.input(FF, -TT);
     TT = 0;
     FF = 0;
 
@@ -60,11 +60,11 @@ function loop_principal() {
 
 document.addEventListener('keydown', function (event) {
     if (event.key == "w") {
-        FF = -0.1
+        FF = 0.1
     }
 
     else if (event.key == "s") {
-        FF = 0.1
+        FF = -0.1
     }
 
     else if (event.key == "a") {
