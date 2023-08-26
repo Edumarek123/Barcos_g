@@ -1,5 +1,7 @@
-var LONGITUDE = 0;
-var LATITUDE = 0;
+var LONGITUDE = -11.9;
+var LATITUDE = -48.9;
+const EARTH_CIRCUNFERENCE = 40075017000;
+
 
 function atualiza_coordenadas() {
     if (navigator.geolocation) {
@@ -33,11 +35,11 @@ function coordenadas_to_pixels(longitude, latitude) {
 function mover_para_coordenadas(longitude, latitude) {
     let c = coordenadas_to_pixels(longitude, latitude);
 
-    document.getElementById("world_map").style.objectPosition = (c.x - 500).toString() + "px " + (c.y - 500).toString() + "px";
+    document.getElementById("world_map").style.objectPosition = (c.y - 500).toString() + "px " + (c.x - 500).toString() + "px";
 }
 
 function rotacionar(teta) {
     document.getElementById("world_map").style.transform = "rotate(" + teta.toString() + "deg)";
 }
 
-atualiza_coordenadas();
+// atualiza_coordenadas();

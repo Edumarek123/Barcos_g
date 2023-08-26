@@ -2,10 +2,11 @@ class Barco {
     constructor(CANVAS) {
         this.ctx = CANVAS;
 
-        this.longitude = 0;
-        this.latitude = 0;
+        this.longitude = LONGITUDE;
+        this.latitude = LATITUDE;
 
         this.velocity = [0, 0];
+        this.acceleration = [0, 0];
 
         this.force = 0;
         this.teta = 0;
@@ -13,7 +14,10 @@ class Barco {
         this.width = 20;
         this.height = 40;
 
-        this.size = 70;
+        this.size = 70; //m
+
+        this.zoom = 10000;
+        document.getElementById("map_wrapper").style.transform = "scale(" + this.zoom.toString() + ")";
     }
 
     draw() {
@@ -34,9 +38,12 @@ class Barco {
     }
 
     update() {
+        this.acceleration[1] += this.force * Math.sin(this.teta) * 0.5;
+        this.acceleration[0] += -this.force * Math.cos(this.teta);
+
         //Position update
-        this.velocity[0] += this.force * -Math.sin(this.teta);
-        this.velocity[1] += this.force * -Math.cos(this.teta);
+        this.velocity[0] += this.acceleration[0];
+        this.velocity[1] += this.acceleration[1];
 
         let maxVelocity = 1;
         for (let i = 0; i < 2; i++) {
@@ -48,14 +55,14 @@ class Barco {
             }
         }
 
-        if (Math.abs(this.teta) > 2 * Math.PI)
-            this.teta = 0;
+        // if (Math.abs(this.teta) > 2 * Math.PI)
+        // this.teta = 0;
 
         this.longitude += this.velocity[0];
         this.latitude += this.velocity[1];
 
         //limitadores
-        let maxL = 180;
+        let maxL = 179;
         if (this.longitude > maxL) {
             this.longitude = -maxL;
         }
@@ -65,27 +72,30 @@ class Barco {
 
         }
 
-        if (this.latitude > maxL) {
-            this.latitude = -maxL;
+        if (this.latitude > maxL / 2 - 2) {
+            this.latitude = -maxL / 2 + 2;
 
         }
 
-        if (this.latitude < -maxL) {
-            this.latitude = maxL;
+        if (this.latitude < -maxL / 2) {
+            this.latitude = maxL / 2 - 2;
         }
 
+        this.acceleration[0] = 0;
+        this.acceleration[1] = 0;
         this.force = 0;
 
-        this.velocity[0] *= 0.97;
-        this.velocity[1] *= 0.97;
+        this.velocity[0] *= 0.9;
+        this.velocity[1] *= 0.9;
 
         //att mapa
+        console.log(this.longitude, this.latitude);
         mover_para_coordenadas(this.longitude, this.latitude);
         rotacionar(this.teta * 180 / Math.PI);
     }
 
     input(f, t) {
-        this.force += f;
-        this.teta += t / 4;
+        this.force += 10 * f / this.zoom;
+        this.teta += t;
     }
 }

@@ -1,6 +1,9 @@
 //CANVAS
-const WIDTH = document.getElementById("map_wrapper").offsetWidth;
-const HEIGHT = document.getElementById("map_wrapper").offsetHeight;
+const WIDTH = 10000;
+const HEIGHT = 10000;
+
+document.getElementById("map_wrapper").style.width = WIDTH.toString() + "px";
+document.getElementById("map_wrapper").style.height = HEIGHT.toString() + "px";
 
 const CANVAS = document.getElementById("game_screen");
 const ctx = CANVAS.getContext("2d");
@@ -44,14 +47,14 @@ function render_objects() {
     BARCO.draw(ctx);
 }
 
-var TT = 0;
-var FF = 0;
+var YY = 0;
+var XX = 0;
 
 function loop_principal() {
 
-    BARCO.input(FF, -TT);
-    TT = 0;
-    FF = 0;
+    BARCO.input(-YY, XX);
+    YY = 0;
+    XX = 0;
 
     BARCO.update();
 
@@ -60,19 +63,19 @@ function loop_principal() {
 
 document.addEventListener('keydown', function (event) {
     if (event.key == "w") {
-        FF = 0.1
+        YY = 0.1
     }
 
     else if (event.key == "s") {
-        FF = -0.1
+        YY = -0.1
     }
 
     else if (event.key == "a") {
-        TT = 0.1;
+        XX = 0.1;
     }
 
     else if (event.key == "d") {
-        TT = -0.1;
+        XX = -0.1;
     }
 });
 
