@@ -1,5 +1,30 @@
-# Barcos_g
+# Barcos.g — Naval Battle Map Prototype
 
-Inicio de desenvolvimento de um jogo de batalha naval baseado em um sistema de mapa mundial.
+A browser-based prototype for a naval battle game built around a world map.
 
-Autor(author): Eduardo Marek Data(date): 01/2023
+## Overview
+
+The project explores a map-centered interface for a naval strategy experience. The map is rendered in the browser, with JavaScript handling the interactive elements and game logic.
+
+## Technologies
+
+- HTML
+- CSS
+- JavaScript
+- HTML Canvas
+
+## Main files
+
+- `index.html` — application entry point
+- `_javascript/mapa.js` — map-related logic
+- `Barco.js` — ship-related logic
+- `main.js` — main application script
+- `media/Mercator_Projection.svg` — map projection asset
+
+## Project focus
+
+This prototype is a practical exploration of interactive cartography and browser-based game development.
+
+## Status
+
+Prototype / study project. Features and gameplay may be incomplete.
