@@ -2,68 +2,76 @@
 
 # Barcos.g — Naval Battle Map Prototype
 
-**A browser-based experiment in world-map interaction for a naval battle game.**
+**A browser-based experiment in interactive mapping and naval-game presentation.**
 
-![JavaScript](https://img.shields.io/badge/JavaScript-ES6%2B-f7df1e?logo=javascript&logoColor=222)
-![Web](https://img.shields.io/badge/platform-browser-4285F4)
+![JavaScript](https://img.shields.io/badge/JavaScript-ES6%2B-F7DF1E?logo=javascript&logoColor=222)
+![Platform](https://img.shields.io/badge/platform-web-4285F4)
 ![Status](https://img.shields.io/badge/status-prototype-orange)
 
 </div>
 
+## Contents
+
+- [Overview](#overview)
+- [Project goals](#project-goals)
+- [Application structure](#application-structure)
+- [Run locally](#run-locally)
+- [Technology](#technology)
+- [Development notes](#development-notes)
+- [License](#license)
+
 ## Overview
 
-Barcos.g is a game prototype centered on a world map and naval-battle concept. The repository brings together a browser entry point, JavaScript code, and map-related visual assets.
+Barcos.g is a browser prototype for a naval-battle concept built around a world map. The project combines an HTML entry point, JavaScript modules, and map-related media to explore an interactive geographic interface.
 
-The project is a prototype rather than a finished strategy game; this README documents the existing direction without implying that unimplemented gameplay systems are available.
+The repository should be considered a prototype: this README does not imply a complete naval strategy game, multiplayer backend, or finished combat system.
 
 ## Project goals
 
-- Explore a map-first interface for a naval game
-- Render and interact with geographic map content in a browser
-- Structure game behavior with JavaScript
-- Experiment with web-based game presentation
+- Explore a world-map-first game interface
+- Render map assets in a browser
+- Organize map and vessel behavior in JavaScript
+- Prototype the presentation of a naval strategy experience
 
-## Built with
+## Application structure
+
+```mermaid
+flowchart TD
+    A[index.html] --> B[Browser interface]
+    B --> C[JavaScript modules]
+    C --> D[Map behavior]
+    C --> E[Ship / game behavior]
+    B --> F[Media assets]
+```
+
+This is a conceptual view based on the repository's entry point and asset folders; it is not a formal architecture specification.
+
+## Run locally
+
+The repository does not include a documented package manager or build pipeline. To serve the static files locally:
+
+```bash
+git clone https://github.com/Edumarek123/Barcos_g.git
+cd Barcos_g
+python3 -m http.server 8000
+```
+
+Open [http://localhost:8000](http://localhost:8000) in your browser.
+
+If the project depends on browser APIs that restrict direct file access, serving it over HTTP avoids common local-file restrictions.
+
+## Technology
 
 - HTML
 - CSS
 - JavaScript
-- Browser rendering technologies
+- Browser-based rendering
+- SVG and other map/media assets
 
-## Run locally
+## Development notes
 
-No build system is documented in the repository. For a static browser prototype, you can serve the repository directory with a local HTTP server:
-
-```bash
-python3 -m http.server 8000
-```
-
-Then open:
-
-```text
-http://localhost:8000
-```
-
-If the prototype uses browser features that restrict local-file access, use this HTTP approach instead of opening `index.html` directly.
-
-## Repository structure
-
-```text
-.
-├── index.html
-├── _javascript/
-├── _media/
-└── README.md
-```
-
-## Project status
-
-Early-stage prototype. Gameplay completeness, browser compatibility, and current feature coverage have not been formally validated.
-
-## Contributing
-
-Bug reports and focused suggestions can be submitted through GitHub issues.
+The repository currently provides a prototype structure rather than a formal API. Before extending it, identify the active script entry points and map asset paths in `index.html`.
 
 ## License
 
-No license file was identified in the repository at the time of writing. Contact the author before redistributing or reusing the project.
+No `LICENSE` file is currently included. Unless a license is added, reuse and redistribution permissions are not granted by this repository.
